@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#databank-bin-scripts/svc_hooks/shutdown
+###
+### shutdown - service hook for booting up databank; called by
+###        /etc/init.d/databank
+###
+
+# Load environment variables
+. $HOME/.bashrc
+
+source $HOME/bin/env.sh
+
+# Stop Rails
+$HOME/bin/stop-rails

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#databank-bin-scripts/start-rails
+
+source $HOME/bin/env.sh
+
+# Clear Rails cache
+( cd $IDEALS_HOME ; RAILS_ENV=$RAILS_ENV bundle exec rake ideals:rails_cache:clear )
+
+# Start Delayed Job
+( cd $IDEALS_HOME ; RAILS_ENV=$RAILS_ENV bin/delayed_job -n 10 start)
+
+# Start Passenger
+( cd $IDEALS_HOME ; RAILS_ENV=$RAILS_ENV bundle install ; RAILS_ENV=$RAILS_ENV bundle exec passenger start -d -e $RAILS_ENV --nginx-config-template nginx.conf.erb --max-pool-size 20 )
+
+echo "Started IDEALS"

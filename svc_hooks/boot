@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# ideals-bin-scripts/svc_hooks/boot
+
+###
+### boot - service hook for booting up ideals; called by
+###        /etc/init.d/ideals
+###
+
+# Load environment variables
+. $HOME/.bashrc
+
+source $HOME/bin/env.sh
+
+# Start Rails
+$HOME/bin/start-rails

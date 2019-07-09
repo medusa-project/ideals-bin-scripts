@@ -1,0 +1,108 @@
+#!/bin/sh
+###
+### /etc/init.d/ideals - IDEALS Services Script
+###
+
+# chkconfig: 2345 99 01
+# description: Databank Services Script
+
+# description: Databank is a custom process which handles starting \
+#              and stopping of the local services on behalf of the service \
+#              user by making a call to the boot or shutdown script in the \
+#              service user's ~/svc_hooks directory
+
+### BEGIN INIT INFO
+# Provides: ideals
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $network
+# Short-Description: Start/Stop service user's local services
+# Description: Services_startup is a custom process which handles starting
+#              and stopping of the local services on behalf of the service
+#              user by making a call to the boot or shutdown script in the
+#              service user's ~/svc_hooks directory
+### END INIT INFO
+
+# source the function library
+. /etc/init.d/functions
+
+_err=0
+SVC_USER="ideals";
+HOOK_DIR="/home/${SVC_USER}/svc_hooks"
+LOCKFILE=/var/lock/subsys/ideals
+RETVAL=0
+STOP_TIMEOUT=10
+
+start() {
+    echo -n $"Starting $SVC_USER services: "
+
+    [ -f "$LOCKFILE" ] && return 1
+
+    /bin/systemctl restart shibd.service
+
+    FILES=/tmp/RackMulti*
+
+    for f in $FILES
+    do
+      if [ -f $f ]; then
+         echo "Removing temporary file $f ..."
+           rm -f "$f"
+      fi
+    done
+
+    /bin/su $SVC_USER -c $HOOK_DIR/boot
+
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch $LOCKFILE
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $SVC_USER services: "
+
+    [ -f "$LOCKFILE" ] || return 1
+
+    /bin/su $SVC_USER -c $HOOK_DIR/shutdown
+
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f $LOCKFILE
+    return $RETVAL
+}
+
+status() {
+    if [ -f "$LOCKFILE" ]; then
+            echo "$SVC_USER services are running"
+            else
+                echo "$SVC_USER services are stopped"
+                fi
+                exit 0
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+  start && success || failure
+  echo
+  ;;
+  stop)
+  stop && success || failure
+  echo
+  ;;
+
+  status)s
+    status
+    ;;
+
+  restart)
+  stop
+  start
+  ;;
+
+  *)
+  echo $"Usage: $prog {start|stop|restart|status}"
+  RETVAL=2
+esac
+
+exit $RETVAL

@@ -1,1 +1,1 @@
-0 4 * * * /home/databank/bin/trim_sessions.sh
+0 4 * * * /home/ideals/bin/trim_sessions.sh

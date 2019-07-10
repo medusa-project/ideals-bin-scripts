@@ -34,7 +34,7 @@ else
 	cd "$(rbenv root)"/plugins/ruby-build && git pull
 fi
 
-#Get temp checkout of databank for use in installing ruby.
+#Get temp checkout of ideals for use in installing ruby.
 IDEALS_TEMP_CHECKOUT_DIR=$HOME/tmp/ideals
 mkdir -p $HOME/tmp
 if [[ ! -d $IDEALS_TEMP_CHECKOUT_DIR ]]; then

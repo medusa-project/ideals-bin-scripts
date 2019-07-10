@@ -4,9 +4,9 @@
 ###
 
 # chkconfig: 2345 99 01
-# description: Databank Services Script
+# description: IDEALS Services Script
 
-# description: Databank is a custom process which handles starting \
+# description: Ideals is a custom process which handles starting \
 #              and stopping of the local services on behalf of the service \
 #              user by making a call to the boot or shutdown script in the \
 #              service user's ~/svc_hooks directory

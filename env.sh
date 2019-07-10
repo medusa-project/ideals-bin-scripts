@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#databank-bin-scripts/env.sh.template
+#ideals-bin-scripts/env.sh
 
 export CAPISTRANO_DIR=$HOME/ideals-capistrano
 

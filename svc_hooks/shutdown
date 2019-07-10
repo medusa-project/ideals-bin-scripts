@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#databank-bin-scripts/svc_hooks/shutdown
+#ideals-bin-scripts/svc_hooks/shutdown
 ###
-### shutdown - service hook for booting up databank; called by
-###        /etc/init.d/databank
+### shutdown - service hook for booting up ideals; called by
+###        /etc/init.d/ideals
 ###
 
 # Load environment variables

@@ -8,6 +8,6 @@ source $HOME/bin/env.sh
 # Stop Delayed Job
 ( cd $IDEALS_HOME ; RAILS_ENV=$RAILS_ENV bin/delayed_job -n 10 stop )
 
-echo "Stopped Illinois Data Bank"
+echo "Stopped IDEALS"
 
 exit 0

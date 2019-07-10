@@ -47,12 +47,12 @@ else
 fi
 
 #Install rubies. Install gems as appropriate.
-DATABANK_RUBY_VERSION=$(cat $DATABANK_TEMP_CHECKOUT_DIR/.ruby-version)
+IDEALS_RUBY_VERSION=$(cat $IDEALS_TEMP_CHECKOUT_DIR/.ruby-version)
 eval "$(rbenv init -)"
-echo "Installing databank ruby"
+echo "Installing ideals ruby"
 rbenv install -s $IDEALS_RUBY_VERSION
 
-echo "Making databank ruby the default rbenv ruby"
+echo "Making ideals ruby the default rbenv ruby"
 rbenv global $IDEALS_RUBY_VERSION
 rbenv shell $IDEALS_RUBY_VERSION
 

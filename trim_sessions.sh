@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #trim_sessions.sh
-HOME=/home/databank
+HOME=/home/ideals
 source $HOME/bin/env.sh
 cd $HOME/current
 if [ -d $HOME/.rbenv ]; then

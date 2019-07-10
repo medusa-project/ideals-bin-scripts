@@ -37,12 +37,12 @@ fi
 #Get temp checkout of databank for use in installing ruby.
 IDEALS_TEMP_CHECKOUT_DIR=$HOME/tmp/ideals
 mkdir -p $HOME/tmp
-if [[ ! -d $DATABANK_TEMP_CHECKOUT_DIR ]]; then
+if [[ ! -d $IDEALS_TEMP_CHECKOUT_DIR ]]; then
     echo "Getting temporary databank checkout"
-    git clone https://github.com/medusa-project/databank.git $DATABANK_TEMP_CHECKOUT_DIR
+    git clone https://github.com/medusa-project/databank.git $IDEALS_TEMP_CHECKOUT_DIR
 else
     echo "Updating temporary collection registry checkout"
-    cd $DATABANK_TEMP_CHECKOUT_DIR
+    cd $IDEALS_TEMP_CHECKOUT_DIR
     git pull
 fi
 
@@ -50,11 +50,11 @@ fi
 DATABANK_RUBY_VERSION=$(cat $DATABANK_TEMP_CHECKOUT_DIR/.ruby-version)
 eval "$(rbenv init -)"
 echo "Installing databank ruby"
-rbenv install -s $DATABNK_RUBY_VERSION
+rbenv install -s $IDEALS_RUBY_VERSION
 
 echo "Making databank ruby the default rbenv ruby"
-rbenv global $DATABANK_RUBY_VERSION
-rbenv shell $DATABANK_RUBY_VERSION
+rbenv global $IDEALS_RUBY_VERSION
+rbenv shell $IDEALS_RUBY_VERSION
 
 #Cron - install the cron jobs per the file "crontab"
 crontab crontab

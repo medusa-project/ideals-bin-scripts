@@ -4,8 +4,8 @@
 export CAPISTRANO_DIR=$HOME/ideals-capistrano
 
 export RAILS_ENV=aws-demo
-export IDEALS_DIR=$HOME/databank
-export IDEALS_HOME=$HOME/databank
+export IDEALS_DIR=$HOME/ideals
+export IDEALS_HOME=$HOME/ideals
 
 export MEDUSA_STORAGE=/media/medusa
 export IDEALS_STORAGE=/media/ideals

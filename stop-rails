@@ -4,5 +4,5 @@ source $HOME/bin/env.sh
 
 $HOME/bin/stop-passenger
 
-echo "Stopped IDEALS"
+echo "Stopped Passenger"
 

@@ -4,4 +4,4 @@ source $HOME/bin/env.sh
 
 cd $IDEALS_HOME
 
-bundle exec rake medusa:fetch_messages > /dev/null 2>&1
+bundle exec rake medusa:messages:fetch > /dev/null 2>&1
